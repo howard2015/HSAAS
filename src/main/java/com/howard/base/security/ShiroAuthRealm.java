@@ -93,6 +93,10 @@ public class ShiroAuthRealm extends AuthorizingRealm {
 				}
 			}
 		}
+		List<String> dataUserList = permissionService.findPermissionsByUserId(userId);
+		if(null != dataUserList && dataUserList.size() > 0) {
+			permissions.addAll(dataUserList);
+		}
 		permissions.remove("");
 		info.addStringPermissions(permissions);
 		return info;

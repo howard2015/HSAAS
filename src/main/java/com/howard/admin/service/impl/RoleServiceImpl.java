@@ -71,8 +71,8 @@ public class RoleServiceImpl extends BaseServiceImpl<RoleMapper, Role, Integer> 
 	/* (non-Javadoc)
 	 * @see com.belling.admin.service.RoleService#findPaginationByName(java.lang.String, java.lang.Integer, com.belling.base.model.Pagination)
 	 */
-	public Pagination<Role> findPaginationByName(String name, Pagination<Role> p) {
-		mapper.findPaginationByName(name, null, p);
+	public Pagination<Role> findPaginationByName(String name,String type, Pagination<Role> p) {
+		mapper.findPaginationByName(name,type, null, p);
 		return p;
 	}
 
@@ -92,7 +92,7 @@ public class RoleServiceImpl extends BaseServiceImpl<RoleMapper, Role, Integer> 
 	 */
 	@Override
 	public List<Role> findAll(Boolean isEnable) {
-		return mapper.findPaginationByName(null, isEnable, null);
+		return mapper.findPaginationByName(null,null, isEnable, null);
 	}
 
 	/* (non-Javadoc)

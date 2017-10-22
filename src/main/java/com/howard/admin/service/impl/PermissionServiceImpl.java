@@ -170,4 +170,10 @@ public class PermissionServiceImpl extends BaseServiceImpl<PermissionMapper, Per
 		}
 		return nodes;
 	}
+
+	@Override
+	public List<String> findPermissionsByUserId(Integer userId) {
+		// TODO Auto-generated method stub
+		return mapper.findPermissionsByUserId(userId);
+	}
 }

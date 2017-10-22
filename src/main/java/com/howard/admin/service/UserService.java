@@ -48,7 +48,7 @@ public interface UserService extends BaseService<User, Integer> {
 	 * @param pageSize 分页记录数
 	 * @return
 	 */
-	public Pagination<User> findPaginationByAccount(String account, Integer appId, Pagination<User> p);
+	public Pagination<User> findPaginationByAccount(String account,String type, Integer appId, Pagination<User> p);
 	
 	/**
 	 * 根据登录名和应用ID查询

@@ -5,7 +5,7 @@
 	<meta name="renderer" content="webkit">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<title>百灵权限管理系统</title>
+	<title>HSAAS权限管理系统</title>
 	<#include "/widget/common-css.html">
 </head>
 <body class="body">
@@ -17,15 +17,15 @@
 				<table class="layui-table">
 					<tr>
 						<td width="40%">软件名称</td>
-						<td width="60%"><@getDict key="site_name"><#if val??>${val}<#else>百灵权限管理系统</#if></@getDict> v1.0.1</td>
+						<td width="60%"><@getDict key="site_name"><#if val??>${val}<#else>HSAAS权限管理系统</#if></@getDict> v1.0.1</td>
 					</tr>
 					<tr>
 						<td>系统作者</td>
-						<td><@getDict key="site_copyright"><#if val??>${val}<#else>蝴蝶飞飞  Sunny Chen</#if></@getDict>（Sunny）  &nbsp;&nbsp;<i class="fa fa-qq"></i> QQ:1056264044</td>
+						<td><@getDict key="site_copyright"><#if val??>${val}<#else>  Howard Han</#if></@getDict>（Howard）  &nbsp;&nbsp;<i class="fa fa-qq"></i> QQ:85341309</td>
 					</tr>
 					<tr>
 						<td>反馈邮箱</td>
-						<td>cjx1717#163.com</td>
+						<td>howard_hsl#163.com</td>
 					</tr>
 					<tr>
 						<td>LayUI官网</td>
@@ -99,7 +99,7 @@
 					</tr>
 					<tr>
 						<td>数据库名称</td>
-						<td>badmin</td>
+						<td>hsaas</td>
 					</tr>
 					<tr>
 						<td>数据库大小</td>

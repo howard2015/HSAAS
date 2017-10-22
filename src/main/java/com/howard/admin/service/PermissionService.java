@@ -36,6 +36,14 @@ public interface PermissionService extends BaseService<Permission, Integer> {
 	 */
 	public List<String> findPermissionsByRoleId(Integer roleId);
 	
+	/**
+	 * 根据用户查询权限
+	 * 
+	 * @param userId 用户ID
+	 * @return
+	 */
+	public List<String> findPermissionsByUserId(Integer userId);
+	
 	
 	/**
 	 * 查询用户权限

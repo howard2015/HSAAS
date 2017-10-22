@@ -41,6 +41,7 @@ layui.use(['form','layer', 'laytpl', 'page_table', 'jacommon', 'tab'], function(
 			"type": "POST",
 			"data" : function(d) {
 				d.kw = $.trim($("#name").val());
+				d.type = "0";
 				d.v = "1.0.1";
 			},
 			"error": handleAjaxError // this sets up jQuery to give me errors  

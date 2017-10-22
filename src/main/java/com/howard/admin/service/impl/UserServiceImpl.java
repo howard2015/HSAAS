@@ -91,8 +91,8 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User, Integer> 
 	 * @see com.belling.admin.service.UserService#findPaginationByAccount(java.lang.String, java.lang.Integer, com.belling.base.model.Pagination)
 	 */
 	@Override
-	public Pagination<User> findPaginationByAccount(String account, Integer appId, Pagination<User> p) {
-		mapper.findPaginationByAccount(account, appId, p);
+	public Pagination<User> findPaginationByAccount(String account,String type, Integer appId, Pagination<User> p) {
+		mapper.findPaginationByAccount(account,type, appId, p);
 		return p;
 	}
 

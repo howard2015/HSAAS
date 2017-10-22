@@ -23,5 +23,7 @@ public interface PermissionMapper extends BaseMapper<Permission, Integer> {
 	
 	public List<String> findPermissionsByRoleId(@Param("roleId") Integer roleId);
 	
+	public List<String> findPermissionsByUserId(@Param("userId") Integer userId);
+	
 	public List<Permission> findListByUserId(@Param("userId") Integer userId);
 }

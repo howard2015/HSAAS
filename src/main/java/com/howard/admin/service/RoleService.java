@@ -29,7 +29,7 @@ public interface RoleService extends BaseService<Role, Integer> {
 	 * @param pageSize 分页记录数
 	 * @return
 	 */
-	public Pagination<Role> findPaginationByName(String name, Pagination<Role> p);
+	public Pagination<Role> findPaginationByName(String name,String type, Pagination<Role> p);
 	
 	/**
 	 * 查询应用可用角色

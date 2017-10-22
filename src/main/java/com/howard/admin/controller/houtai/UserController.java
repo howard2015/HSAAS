@@ -85,6 +85,7 @@ public class UserController extends BaseController {
 	@ResponseBody
 	public TablePageResult page(HttpServletRequest req, Integer draw) {
 		String kw = req.getParameter("kw");
+		String type = req.getParameter("type");
 		String curpage = req.getParameter("start");
 		if (Strings.isNullOrEmpty(curpage)) {
 			curpage = "0";
@@ -103,7 +104,7 @@ public class UserController extends BaseController {
 		}
 		
 		Pagination<User> page = new Pagination<User>();
-		page = userService.findPaginationByAccount(kw, null, new Pagination<User>((start / length) + 1, length));
+		page = userService.findPaginationByAccount(kw,type, null, new Pagination<User>((start / length) + 1, length));
 		return TablePageResult.createSuccessResult(page.getList(), page.getRowCount(), draw + 1);
 	}
 	
@@ -124,6 +125,7 @@ public class UserController extends BaseController {
 				throw new ValidateException("密码不能为空");
 			}
 			user = new User();
+			user.setType("0");
 			user.setCreateTime(new Date());
 		} else {
 			user = userService.get(id);

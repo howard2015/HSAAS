@@ -18,7 +18,9 @@
 			loginCount,
 			lastLoginTime,
 			createTime,
-			isEnable
+			isEnable,
+			type,
+			tenantId
 		) 
 		VALUES (
 			#{account},
@@ -27,7 +29,9 @@
 			#{loginCount},
 			#{lastLoginTime},
 			#{createTime},
-			#{isEnable}
+			#{isEnable},
+			#{type},
+			#{tenantId}
 		)
 	</insert>
 	
@@ -61,6 +65,9 @@
 		SELECT * 
      	FROM SYS_USER a
      	WHERE 1 = 1
+     	<if test="type != null and type != '' ">
+			AND a.type = #{type} 
+		</if>
      	<if test="account != null and account != '' ">
 			AND a.account like CONCAT('%',#{account},'%')
 		</if>

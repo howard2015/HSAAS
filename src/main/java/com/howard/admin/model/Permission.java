@@ -45,4 +45,8 @@ public class Permission extends PersistentObject {
 	
 	/** 是否启用 */
 	private Boolean isEnable;
+	
+	private Boolean type ;
+	
+	private String tenantId ;
 }

@@ -46,4 +46,8 @@ public class User extends PersistentObject {
 	
 	/** 是否启用 */
 	private Boolean isEnable = true;
+	
+	private String type ;
+	
+	private String tenantId ;
 }

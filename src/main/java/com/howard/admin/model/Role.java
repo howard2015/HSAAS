@@ -34,6 +34,10 @@ public class Role extends PersistentObject {
 	/** 是否启用 */
 	private Boolean isEnable = true;
 	
+	private String type ;
+	
+	private String tenantId ;
+	
 	/** 以下为显示辅助参数 */
 	private Boolean isChecked = Boolean.valueOf(false);
 }

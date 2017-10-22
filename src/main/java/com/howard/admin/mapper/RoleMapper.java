@@ -19,7 +19,7 @@ public interface RoleMapper extends BaseMapper<Role, Integer> {
 
 	public int resetPassword(@Param("password") String password, @Param("idList") List<Integer> idList);
 
-	public List<Role> findPaginationByName(@Param("name") String name, @Param("isEnable") Boolean isEnable,  Pagination<Role> p);
+	public List<Role> findPaginationByName(@Param("name") String name,@Param("type") String type, @Param("isEnable") Boolean isEnable,  Pagination<Role> p);
 	
 	public List<Role> selectRolesByUser(@Param("userId") Integer userId);
 }

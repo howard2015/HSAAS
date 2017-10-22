@@ -1,5 +1,7 @@
 package com.howard.admin.controller.houtai;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.common.base.Strings;
 import com.howard.admin.model.Role;
 import com.howard.admin.service.RoleService;
 import com.howard.base.controller.BaseController;
@@ -81,15 +84,28 @@ public class RoleController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(value = "/page", method = RequestMethod.POST)
-	public @ResponseBody TablePageResult page(String kw, Integer start, Integer length, Integer draw) {
+	@ResponseBody
+	public TablePageResult page(HttpServletRequest req,Integer draw) {
+		String kw = req.getParameter("kw");
+		String type = req.getParameter("type");
+		String curpage = req.getParameter("start");
+		if (Strings.isNullOrEmpty(curpage)) {
+			curpage = "0";
+		}
+		int start = Integer.parseInt(curpage);
 		if (start <= 0) {
 			start = 0;
 		}
+		String curlg = req.getParameter("length");
+		if (Strings.isNullOrEmpty(curlg)) {
+			curlg = "1";
+		}
+		int length = Integer.parseInt(curlg);
 		if (length <=  0) {
 			length = 8;
 		}
 		Pagination<Role> page  = new Pagination<Role>((start / length) + 1, length);
-		page = roleService.findPaginationByName(kw, page);
+		page = roleService.findPaginationByName(kw,type, page);
 		return TablePageResult.createSuccessResult(page.getList(), page.getRowCount(), draw + 1);
 	}
 	
@@ -121,6 +137,7 @@ public class RoleController extends BaseController {
 		Role role;
 		if (id == null) {
 			role = new Role();
+			role.setType("0");
 		} else {
 			role = roleService.get(id);
 		}

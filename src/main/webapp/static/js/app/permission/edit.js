@@ -35,6 +35,11 @@ layui.use(['form', 'layedit', 'jacommon', 'laydate', 'layer','element','form'], 
 			} else {
 				postData.isEnable = 0;
 			}
+			if (postData.type !== 'undefined' && postData.type !== '' && postData.type !== null && postData.type == 'on') {
+				postData.type = 1;
+			} else {
+				postData.type = 0;
+			}
 		subBtn.addClass('layui-btn-disabled').html('<i class="layui-icon">&#xe605;</i> 提交中...');
 		// 提交请求
 		jacommon.ajaxPost(postUrl, postData, function(res) {

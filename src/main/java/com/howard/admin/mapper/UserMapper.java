@@ -45,7 +45,7 @@ public interface UserMapper extends BaseMapper<User, Integer> {
 	 * @param p
 	 * @return
 	 */
-	public List<User> findPaginationByAccount(@Param("account") String account, @Param("appId") Integer appId, Pagination<User> p);
+	public List<User> findPaginationByAccount(@Param("account") String account,@Param("type") String type, @Param("appId") Integer appId, Pagination<User> p);
 	
 	/**
 	 * @param account

@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.howard.admin.model.Permission;
 import com.howard.admin.model.RolePermission;
+import com.howard.admin.model.UserPermission;
 import com.howard.admin.service.PermissionService;
 import com.howard.admin.service.RolePermissionService;
+import com.howard.admin.service.UserPermissionService;
 import com.howard.base.controller.BaseController;
 import com.howard.base.layerui.NavNode;
 import com.howard.base.model.ResponseResult;
@@ -38,6 +40,12 @@ public class PermissionController extends BaseController {
 	 */
 	@Autowired
 	private RolePermissionService rolePermissionService;
+	
+	/**
+	 * 用户与权限关联业务对象
+	 */
+	@Autowired
+	private UserPermissionService userPermissionService;
 	
 
 	/**
@@ -65,7 +73,7 @@ public class PermissionController extends BaseController {
 		Permission permission = new Permission();
 		permission.setId(null);
 		permission.setPId(-1);
-		permission.setName("百灵权限管理系统");
+		permission.setName("HSAAS权限管理系统");
 		list.add(0, permission);
 		return list;
 	}
@@ -92,7 +100,9 @@ public class PermissionController extends BaseController {
 			String url,
 			Integer sort,
 			Boolean isMenu,
-			Boolean isEnable) {
+			Boolean isEnable,
+			Boolean type,
+			String tenantId) {
 		Permission domain;
 		if (id == null) {
 			domain = new Permission();
@@ -107,6 +117,8 @@ public class PermissionController extends BaseController {
 		domain.setSort(sort);
 		domain.setIsMenu(isMenu);
 		domain.setIsEnable(isEnable);
+		domain.setType(type);
+		domain.setTenantId(tenantId);
 		permissionService.save(domain);
 		return ResponseResult.createSuccessResult().setMessage("保存成功");
 	}
@@ -177,6 +189,41 @@ public class PermissionController extends BaseController {
 			permissionId = i$.next();
 		}
 		rolePermissionService.allocate(roleId, list);
+		return ResponseResult.createSuccessResult().setMessage("授权成功");
+	}
+	
+	/**
+	 * 用户授权
+	 * 
+	 * @param userId
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value = "/allocateUser", method = RequestMethod.GET)
+	public String allocateUser(Integer userId, Model model) {
+		model.addAttribute("userId", userId);
+		model.addAttribute("permissions", userPermissionService.findByUserId(userId));
+		return "/user/permission-allocate";
+	}
+	
+	
+	/**
+	 * 用户管理权限保存
+	 * 
+	 * @param userId 用户id
+	 * @param permissionIds 权限ids
+	 * @return
+	 */
+	@RequestMapping(value = "/allocateUserSave", method = RequestMethod.POST)
+	@ResponseBody
+	public ResponseResult allocateUserSave(Integer userId, String permissionIds) {
+		List<Integer> idList = getAjaxIds(permissionIds);
+		List<UserPermission> list = new ArrayList<UserPermission>();
+		Integer permissionId;
+		for (Iterator<Integer> i$ = idList.iterator(); i$.hasNext(); list.add(new UserPermission(userId, permissionId))) {
+			permissionId = i$.next();
+		}
+		userPermissionService.allocate(userId, list);
 		return ResponseResult.createSuccessResult().setMessage("授权成功");
 	}
 	

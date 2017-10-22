@@ -13,14 +13,18 @@
 			code,
 			sort,
 			description,
-			isEnable
+			isEnable,
+			type,
+			tenantId
 		) 
 		VALUES (
 			#{name},
 			#{code},
 			#{sort},
 			#{description},
-			#{isEnable}
+			#{isEnable},
+			#{type},
+			#{tenantId}
 		)
 	</insert>
 	
@@ -30,7 +34,9 @@
 			a.`code` = #{code},
 			a.`sort` = #{sort},
 			a.`description` = #{description},
-			a.isEnable = #{isEnable}
+			a.isEnable = #{isEnable},
+			a.type = #{type},
+			a.tenantId = #{tenantId}
 		WHERE a.`id` = #{id}
 	</update>
 	
@@ -49,6 +55,9 @@
      	WHERE 1 = 1
      	<if test="name != null and name != '' ">
 			AND a.name like CONCAT('%',#{name},'%')
+		</if>
+		<if test="type != null and type != '' ">
+			AND a.type = #{type} 
 		</if>
 		<if test="isEnable != null">
 			AND a.isEnable = #{isEnable} 

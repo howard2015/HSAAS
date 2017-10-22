@@ -16,7 +16,9 @@
 			url,
 			sort,
 			isMenu,
-			isEnable
+			isEnable,
+			type,
+			tenantId
 		) 
 		VALUES (
 			#{pId},
@@ -26,7 +28,9 @@
 			#{url},
 			#{sort},
 			#{isMenu},
-			#{isEnable}
+			#{isEnable},
+			#{type},
+			#{tenantId}
 		)
 	</insert>
 	
@@ -39,7 +43,9 @@
 			a.`url` = #{url},
 			a.`sort` = #{sort},
 			a.`isMenu` = #{isMenu},
-			a.isEnable = #{isEnable}
+			a.isEnable = #{isEnable},
+			a.type = #{type},
+			a.tenantId = #{tenantId}
 		WHERE a.`id` = #{id}
 	</update>
 	
@@ -126,6 +132,17 @@
 		 	WHERE 1 = 1
 			<if test="roleId != null and roleId != '' ">
 				AND a.roleId = #{roleId} 
+			</if>
+	</select>
+	
+	<!-- 根据用户ID查询权限 -->
+	<select id="findPermissionsByUserId" parameterType="map" resultType="String">   
+		SELECT p.permission
+		 	FROM SYS_PERMISSION p
+		 	INNER JOIN SYS_RE_USER_PERMISSION a ON p.id = a.permissionId AND p.isEnable = 1
+		 	WHERE 1 = 1
+			<if test="userId != null and userId != '' ">
+				AND a.userId = #{userId} 
 			</if>
 	</select>
 </mapper>

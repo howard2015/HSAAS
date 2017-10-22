@@ -55,6 +55,6 @@
 	<script type="text/javascript" src="${base}/static/plugins/datatables/1.10.13/jquery-1.10.2.min.js"></script>
 	<script type="text/javascript" src="${base}/static/plugins/zTree/js/jquery.ztree.core-3.5.min.js"></script>
 	<script type="text/javascript" src="${base}/static/plugins//zTree/js/jquery.ztree.excheck-3.5.min.js"></script>
-	<script type="text/javascript" src="${base}/static/js/app/permission/list.js"></script>
+	<script type="text/javascript" src="${base}/static/js/app/permission/plist.js"></script>
 </body>
 </html>

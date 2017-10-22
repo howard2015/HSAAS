@@ -41,6 +41,7 @@ layui.use(['form','layer', 'laytpl', 'page_table', 'jacommon', 'tab'], function(
 			"type": "POST",
 			"data" : function(d) {
 				d.kw = $.trim($("#keyword").val());
+				d.type = "0";
 				d.v = "1.0.1";
 			},
 			"error": handleAjaxError // this sets up jQuery to give me errors 
@@ -277,6 +278,23 @@ layui.use(['form','layer', 'laytpl', 'page_table', 'jacommon', 'tab'], function(
 				type: 2,
 				title: '分配角色',
 				content: WEB_ROOT + "/admin/userRole/allocate?userId=" + ids
+			});
+			layer.full(index);
+		}
+	}).on('click','#btn-permission', function(){
+		var ids = pageTable.getIds($('#dataTable'), 'data-id');
+		if(ids == null || ids == ''){
+			layer.msg('至少选择一行吆！');
+		} else {
+			var array = ids.split(',');
+			if (array.length != 1) {
+				layer.msg('只能单行操作吆！');
+				return;
+			}
+			var index = layer.open({
+				type: 2,
+				title: '分配角色',
+				content: WEB_ROOT + "/admin/permission/allocateUser?userId=" + ids
 			});
 			layer.full(index);
 		}

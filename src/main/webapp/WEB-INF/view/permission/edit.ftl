@@ -77,6 +77,16 @@
 						</#if>
 					</div>
 				</div>
+				<div class="layui-form-item" pane="">
+					<label class="layui-form-label">是否系统</label>
+					<div class="layui-input-block">
+						<#if vo.type == true>
+						<input type="checkbox" checked="" name="type" lay-skin="switch" lay-filter="switchOn" title="是否系统">
+						<#else>
+						<input type="checkbox" name="type" lay-skin="switch" lay-filter="switchOn" title="是否系统">
+						</#if>
+					</div>
+				</div>
 				<div class="layui-form-item">
 					<div class="layui-input-block">
 						<button class="layui-btn" lay-submit="" lay-filter="btnSub">

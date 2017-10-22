@@ -50,7 +50,14 @@
 				<a class="layui-btn layui-btn-primary" id="btn-allocate">
 					 <i class="layui-icon">&#xe609;</i> 分配角色
 				</a>
-				</@shiro.hasPermission> 
+				</@shiro.hasPermission>
+				<@shiro.hasPermission name="sys:user:allocatepermission">  
+				<a class="layui-btn layui-btn-primary" id="btn-permission">
+					 <i class="layui-icon">&#xe609;</i> 分配权限
+				</a>
+				</@shiro.hasPermission>
+				
+				 
 			</div>
 		</span>
 		<span class="fr"> 

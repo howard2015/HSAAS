@@ -1,10 +1,10 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title><@getDict key="site_name"><#if val??>${val}<#else>百灵权限管理系统</#if></@getDict></title>
-		<meta name="description" content="<@getDict key="meta_description"><#if val??>${val}<#else>百灵权限管理系统</#if></@getDict>" />
-		<meta name="keywords" content="<@getDict key="site_keywords"><#if val??>${val}<#else>百灵权限管理系统</#if></@getDict>" />
+		<title><@getDict key="site_name"><#if val??>${val}<#else>HSAAS权限管理系统</#if></@getDict></title>
+		<meta name="description" content="<@getDict key="meta_description"><#if val??>${val}<#else>HSAAS权限管理系统</#if></@getDict>" />
+		<meta name="keywords" content="<@getDict key="site_keywords"><#if val??>${val}<#else>HSAAS权限管理系统</#if></@getDict>" />
 		<meta name="renderer" content="webkit">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -20,7 +20,7 @@
 				<div class="layui-main">
 					<div class="admin-login-box">
 						<a class="logo" style="left: 0;" href="http://beginner.zhengjinfan.cn/demo/beginner_admin/">
-							<span style="font-size: 20px;"><@getDict key="site_name"><#if val??>${val}<#else>百灵权限管理系统</#if></@getDict></span>
+							<span style="font-size: 20px;"><@getDict key="site_name"><#if val??>${val}<#else>HSAAS权限管理系统</#if></@getDict></span>
 						</a>
 						<div class="admin-side-toggle">
 							<i class="fa fa-exchange" aria-hidden="true"></i>
