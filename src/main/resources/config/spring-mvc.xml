@@ -19,6 +19,7 @@
 	
 	<!-- Controller扫描包 -->
 	<context:component-scan base-package="com.howard.admin.controller" />
+	<context:component-scan base-package="com.howard.tenant.controller" />
 
 	<!-- 自定义Json解析器 -->
 	<mvc:annotation-driven>

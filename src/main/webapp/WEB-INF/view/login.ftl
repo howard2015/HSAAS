@@ -44,9 +44,14 @@
 								<i class="fa fa-arrow-circle-right" aria-hidden="true"></i> 登录
 							</button>
 						</div>
-						<div class="beg-clear"></div>
+						<div class="beg-clear">
+						<button type="button" class="layui-btn layui-btn-primary" id="btn-register" lay-filter="btn-register">
+							<i class="layui-icon">&#xe608;</i> 注册
+						</button>
+				</div>
 					</div>
 				</form>
+				
 			</div>
 			<footer>
 				<p>2017 © <@getDict key="site_copyright"><#if val??>${val}<#else>蝴蝶飞飞  Sunny Chen</#if></@getDict></p>
@@ -60,7 +65,7 @@
 		</script>
 		<script type="text/javascript" src="${base}/static/plugins/layui/layui.js"></script>
 		<script type="text/javascript" charset="utf8" src="${base}/static/plugins/datatables/1.10.13/jquery-1.10.2.min.js"></script>
-		<script type="text/javascript" src="${base}/static/js/app/login.js"></script>
+		<script type="text/javascript" src="${base}/static/js/app/login.js?v=1"></script>
 		<script type="text/javascript" src="${base}/static/js/jump2.js"></script> 
 	</body>
 

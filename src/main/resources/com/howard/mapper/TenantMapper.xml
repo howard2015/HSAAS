@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.howard.tenant.mapper.TenantMapper">
+	
+	<!-- 根据ID查询  -->
+	<select id="get" parameterType="java.lang.Integer" resultType="Tenant">
+     	SELECT * 
+     	FROM TB_TENANT a
+     	WHERE id = #{id}
+    </select>
+    
+    <!-- 租户添加  -->
+	<insert id="insert" parameterType="Tenant" statementType="PREPARED" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO TB_TENANT(
+			account,
+			password,
+			name,
+			company,
+			contactor,
+			address,
+			telphone,
+			state,
+			createTime,
+			isEnable
+		) 
+		VALUES (
+			#{account},
+			#{password},
+			#{name},
+			#{company},
+			#{contactor},
+			#{address},
+			#{telphone},
+			#{state},
+			#{createTime},
+			#{isEnable}
+		)
+	</insert>
+	
+    <update id="update" parameterType="Tenant" statementType="PREPARED">
+		UPDATE TB_TENANT a SET
+			a.`account` = #{account},
+			a.`password` = #{password},
+			a.`name` = #{name},
+			a.`company` = #{company},
+			a.`contactor` = #{contactor},
+			a.`address` = #{address},
+			a.`telphone` = #{telphone},
+			a.isEnable = #{isEnable}
+		WHERE a.`id` = #{id}
+	</update>
+	
+	<update id="enable" parameterType="map" statementType="PREPARED">
+		UPDATE TB_TENANT a SET
+			a.isEnable = #{isEnable}
+		WHERE 1 = 1
+		<if test="idList != null">
+			AND a.`id` in <foreach collection="idList" item="item" open="(" separator="," close=")">#{item}</foreach>
+		</if>
+	</update>
+	
+	<update id="resetPassword" parameterType="map" statementType="PREPARED">
+		UPDATE TB_TENANT a SET
+			a.password = #{password}
+		WHERE 1 = 1
+		<if test="idList != null">
+			AND a.`id` in <foreach collection="idList" item="item" open="(" separator="," close=")">#{item}</foreach>
+		</if>
+	</update>
+	
+	<select id="findPaginationByAccount" parameterType="map" resultType="Tenant">   
+		SELECT * 
+     	FROM TB_TENANT a
+     	WHERE 1 = 1
+     	<if test="account != null and account != '' ">
+			AND a.account like CONCAT('%',#{account},'%')
+		</if>
+     	ORDER BY a.createTime DESC 
+	</select>
+	
+	<select id="findByAccount" parameterType="map" resultType="Tenant">   
+		SELECT a.* 
+     	FROM TB_TENANT a
+     	WHERE 1 = 1
+     	<if test="account != null and account != '' ">
+			AND a.account = #{account} 
+		</if>
+	</select>
+	
+	<delete id="deleteById" parameterType="list" statementType="PREPARED">
+		DELETE FROM TB_TENANT
+		<choose>
+			<when test="list == null or list.size() == 0">
+				WHERE 1 != 1
+			</when>
+			<when test="list.size() == 1">
+				WHERE `id` = <foreach collection="list" item="id">#{id}</foreach>
+			</when>
+			<otherwise>
+				WHERE `id` in <foreach collection="list" item="id" open="(" separator="," close=")">#{id}</foreach>
+			</otherwise>
+		</choose>
+	</delete>
+</mapper>

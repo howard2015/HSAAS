@@ -38,4 +38,8 @@ layui.config({
 		});
 		return false;
 	});
+	
+	$(document).on('click','#btn-register', function(){
+		location.href = WEB_ROOT + '/register';
+	});
 });
